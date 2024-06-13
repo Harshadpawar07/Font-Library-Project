@@ -1,0 +1,48 @@
+import tkinter as tk
+from tkinter import messagebox
+
+class CardGenerator:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Card Generator")
+
+        # Employee Information
+        self.employee_name = tk.StringVar()
+        self.employee_id = tk.StringVar()
+        self.employee_department = tk.StringVar()
+        self.employee_salary = tk.StringVar()
+
+        # Sensitive Information Display
+        self.show_sensitive_info = tk.BooleanVar()
+        self.show_sensitive_info.set(False)
+
+        # Create GUI Elements
+        self.create_widgets()
+
+    def create_widgets(self):
+        # Labels and Entry widgets for Employee Information
+        tk.Label(self.root, text="Employee Name:").pack()
+        tk.Entry(self.root, textvariable=self.employee_name).pack()
+
+        tk.Label(self.root, text="Employee ID:").pack()
+        tk.Entry(self.root, textvariable=self.employee_id).pack()
+
+        tk.Label(self.root, text="Employee Department:").pack()
+        tk.Entry(self.root, textvariable=self.employee_department).pack()
+
+        tk.Label(self.root, text="Employee Salary:").pack()
+        tk.Entry(self.root, textvariable=self.employee_salary).pack()
+
+        # Checkbox to show/hide sensitive information
+        tk.Checkbutton(self.root, text="Show Sensitive Info", variable=self.show_sensitive_info).pack()
+
+        # Button to generate card
+        tk.Button(self.root, text="Generate Card", command=self.generate_card).pack()
+
+        # Text widget to display the generated card
+        self.card_display = tk.Text(self.root, height=10, width=40)
+        self.card_display.pack()
+
+    def generate_card(self):
+        # Get employee information
+       
